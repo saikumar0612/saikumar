@@ -1,0 +1,314 @@
+<div class="container" style="padding-left: 0px; padding-right: 0px;">
+    <main id="jf-main" class="jf-main jf-haslayout" >
+        <div class="jf-dbsectionspace jf-haslayout">
+            <div class="row"> 
+                
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12">    
+                    <div class="jf-dashboardbox jf-myappliedjobs">
+                        <div class="jf-dashboardboxtitle">
+                            <h2>Account Settings</h2>
+                        </div>
+                        <form #accountFrm="ngForm" name="form" (ngSubmit)="letterFrm.form.valid">
+                            <div class="row">
+                                <div class="col-md-8"  style="margin:20px">
+                                    <strong class="col-sm-4 col-form-label">Work Authorization &nbsp;:</strong>
+                                    <div class="col-sm-8 ">
+                                    <select class="form-control mb-10 passwordField" name="workAuth" [(ngModel)]="submitData.workAuth" #workAuth = "ngModel">
+                                        <option *ngFor="let work of workData" value="{{work.id}}">{{work.name}}</option>
+                                    </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-8"  style="margin:20px">
+                                    <strong class="col-sm-4 col-form-label">Willingness To Change &nbsp;:</strong>
+                                    <div class="col-sm-8 ">
+                                        <select class="form-control mb-10 passwordField" name="to_change" [(ngModel)]="submitData.to_change" #to_change = "ngModel">
+                                            <option value="0" >Employed, actively looking</option>
+                                            <option  value="1">Unemployed, actively looking</option>
+                                            <option value="2">Open to a change, actively manage my career</option>
+                                            <option value="3">Would only change for the perfect opportunity</option>
+                                            <option value="4">In school, looking for job after graduation</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12"  style="margin:20px">
+                                    <strong class="col-sm-3 col-form-label">Email Notifications &nbsp;:</strong>       
+                                </div>
+                                <div>
+                                    <div class="col-sm-2 ">
+
+                                    </div>
+                                    <div class="col-sm-10 ">
+                                        <input type="checkbox" id="newsLetter" name="newsLetter" [(ngModel)]="newsLetter">&nbsp;&nbsp;&nbsp;
+                                        <span> <strong>Newsletters:</strong> The latest tech news, career advice, skill and salary insights (weekly).</span> 
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="col-sm-2 ">
+                                        
+                                    </div>
+                                    <div class="col-sm-10 ">
+                                        <input type="checkbox" id="tedCommunication" name="tedCommunication" [(ngModel)]="tedCommunication">&nbsp;&nbsp;&nbsp;
+                                        <span><strong>Tedpros Communications:</strong> Find out what's new at Tedpros, including latest jobs, product announcements and surveys (occasional).</span> 
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="col-sm-2 ">
+                                        
+                                    </div>
+                                    <div class="col-sm-10 ">
+                                        <input type="checkbox" id="special_offer" name="special_offer" [(ngModel)]="special_offer">&nbsp;&nbsp;&nbsp;
+                                        <span><strong>Special Offers:</strong> Job openings, events and other opportunities from select partners and hiring companies (occasional).</span> 
+                                    </div>
+                                </div>
+                            </div>
+                            <form #letterFrm="ngForm" name="form" (ngSubmit)="letterFrm.form.valid">
+                                <div class="row" >
+                                <div style="margin:20px">
+                                    <div class="col-sm-2" >
+                                        <strong class="col-form-label" style="margin:20px">Cover Letters &nbsp;:</strong>
+                                    </div>
+                                    
+                                    <div class="col-sm-10" *ngIf="resuletData">
+                                        <table class="table" style="width: 80%;">
+                                            <thead>
+                                                <tr>
+                                                    <th>Title</th>
+                                                    <!-- <th>Cover Letter</th> -->
+                                                    <th>Date added</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let x of resuletData">
+                                                    <td style="width: 20%;">{{x.title}}</td>
+                                                    <!-- <td style="width: 50%;" [innerHTML]="x.letter"></td> -->
+                                                    <td style="width: 12%;">{{x.date_added | date:'MM/dd/yyyy'}}</td>
+                                                    <td style="width: 20%;">
+                                                        <!-- <a (click)="openPopup(x.id)">Preview </a> 
+                                                        <a>Delete </a> -->
+                                                        <a class="btn btn-success " title="Preview" id="ViewResume" (click)="openPopup(x.id)" style="color: white;"><i class="fa fa-eye"></i></a>
+                                                        <a class="btn btn-danger " title="Delete cover letter" id="ViewResume" (click)="delete(x.id)" style="color: white;margin: 5px;"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2">
+
+                                    </div>
+                                    <div class="col-md-8"  style="margin:20px">
+                                        
+                                        <div class="col-sm-8 " *ngIf="!formDisplay">
+                                            <button  type="button" class="btn btn-default" (click)="addCoverLetter()">Add Cover Letter</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        
+                                    </div>
+                                </div>
+                                <div *ngIf="formDisplay">
+                                    <div class="row" >
+                                        <div class="col-sm-2 ">
+            
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <label class="col-sm-3" style="font-weight: bold;">Cover Letter Title <span class="req-field">*</span>
+                                                &nbsp;:</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" id="title" class="form-control passwordField" placeholder="Enter cover letter title" name="title" [(ngModel)]="letterData.title" #title = "ngModel" [ngClass]="{ 'is-invalid': letterFrm.submitted && title.invalid }"  required>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <button  type="button" class="btn btn-success" (click)="addCoverletter(letterFrm)" [disabled]="!letterFrm.valid">Save Cover Letter</button>
+                                            </div>
+                                            <div class="col-sm-1">
+                                                <a (click)="closeOfferLetter(letterFrm)" ><span>Cancel</span></a>
+                                            </div>
+                                        </div>
+                                    </div><br/>
+                                    <div class="row">
+                                        <div class="col-sm-2 ">
+            
+                                        </div>
+                                        <div class="col-sm-9 ">
+                                            <ckeditor  id="letter" name="letter" [(ngModel)]="letterData.letter" #letter = "ngModel" [ngClass]="{ 'is-invalid': letterFrm.submitted && letter.invalid }"  required >
+                                            </ckeditor>
+                                        </div>
+                                        <div class="col-sm-1">
+        
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        
+                            <!-- password  -->
+                            <div class="row">
+                                <div class="col-md-8"  style="margin:20px">
+                                    <strong class="col-sm-4 col-form-label">Password  &nbsp;:</strong>
+                                    <div class="col-sm-8 ">
+                                        <a (click)="password()"> ******** Change Password</a>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    
+                                </div>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="row">
+                                <div class="col-md-8"  style="margin:20px">
+                                    <strong class="col-sm-4 col-form-label">Email  &nbsp;:</strong>
+                                    <div class="col-sm-2 ">
+                                        <a (click)="email()"> Change Email</a>
+                                    </div>
+                                    <div class="col-sm-2 ">
+                                        <p>{{filterData.email}}</p>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    
+                                </div>
+                            </div>
+
+                            <div style="margin: 15px;" class="pull-right">
+                                <button type="button" class="btn btn-success mlr-5" id="submit" (click)="addInfo()" >Submit</button>
+                                <button type="button" class="btn btn-danger mlr-5" id="cancel" (click)="cancel()">Cancel</button>
+                            </div>
+                        </form>
+                    </div>                                    
+                </div>
+            </div>
+        </div>
+        
+    </main>
+</div>
+        
+        <!-- cover letter details -->
+        <div class="popupbox_wrap" *ngIf="coverLetterDetails">
+            <div class="popupbox" style="width: 70%;">
+                <h4>Cover Letter Details :</h4>
+                <form class="search-form" #emailForm="ngForm">
+                    <div class="padding-20">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label class="col-sm-12 " style="font-weight: bold;">{{letterDetails.title}} :</label>
+                                <div class="col-sm-12">
+                                    <span [innerHTML]="letterDetails.letter"></span>
+                                </div>
+                            </div>   
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button class="pull-right" type="button" class="btn btn-info" (click)="closePopup()" id="closePopup">Close</button>
+                            </div>
+                        </div>
+                
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <!-- change Password -->
+        <div class="popupbox_wrap" *ngIf="passwordPopup">
+            <div class="popupbox">
+                <h4>Change Password</h4>
+                <form class="search-form" #passwordForm="ngForm">
+                <div class="padding-20">
+                    <div class="row">
+                    <div class="col-md-12">
+                        <label class="col-sm-12 " style="font-weight: bold;">Old Password <span class="req-field">*</span>
+                        &nbsp;:</label>
+                        <div class="col-sm-12">
+                        <input type="password" id="oldPassword" class="form-control passwordField" placeholder="Enter your old password" name="oldPassword" [(ngModel)]="changesData.oldPassword " #oldPassword="ngModel" required>
+                        <!-- <p *ngIf="error" style="color: red;padding: 0px;">{{error}}</p> -->
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-12 ">
+                            <label class="col-sm-12 " style="font-weight: bold;">Enter New Password <span class="req-field">*</span>
+                                &nbsp;:</label>
+                            <div class="col-sm-12">
+                                <input type="password" name="password" class="form-control passwordField" placeholder="Enter New Password*" id="password" [(ngModel)]="changesData.password " #password="ngModel" [ngClass]="{ 'is-invalid': passwordForm.submitted && password.invalid }" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&]).{8,}" required title="Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character">
+                            </div>
+                            <div *ngIf="password.touched && password.invalid" class="invalid-feedback">
+                                <div *ngIf="password.errors.required">Password is required</div>
+                            </div>
+                            <div *ngIf="password.errors?.pattern" class="invalid-feedback">Password should contain minimum eight characters, at least one uppercase & lowercase letter, one number and one special character</div>
+                            
+                        </div>
+                        <div class="col-md-12">
+                            <label class="col-sm-12 " style="font-weight: bold;">Confirm Password <span class="req-field">*</span>
+                                &nbsp;:</label>
+                            <div class="col-sm-12">
+                                <input type="password" name="cpassword" class="form-control passwordField" placeholder="Confirm New Password*" id="confirmPassword" [(ngModel)]="changesData.cpassword" #cpassword="ngModel" [ngClass]="{ 'is-invalid': passwordForm.submitted && cpassword.invalid }" required>
+                                <div *ngIf="(cpassword.touched && cpassword.errors) || changesData.password!=changesData.cpassword">
+                                    <p *ngIf="cpassword.touched && cpassword.errors" class="invalid-feedback">Please Confirm Password</p>
+                                    <p *ngIf="cpassword.touched && changesData.password!=changesData.cpassword" class="invalid-feedback">Passwords didn't match</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="row" style="margin:10px;">
+                    <button type="button" class="btn btn-success mlr-5" id="submitPassword" (click)="changePassword(passwordForm)"
+                        [disabled]="!passwordForm.valid">Submit</button>
+                    <button type="button" class="btn btn-info" (click)="closePasswordPopup(passwordForm)" id="closePasswordPopup">Close</button>
+                    <p *ngIf="error" style="color: red;padding: 0px;">{{error}}</p>
+                    </div>
+            
+                </div>
+                </form>
+            </div>
+        </div>
+        
+        <!-- change Email -->
+        <div class="popupbox_wrap" *ngIf="emailPopup">
+            <div class="popupbox">
+                <h4>Change Email</h4>
+                <form class="search-form" #emailForm="ngForm">
+                <div class="padding-20">
+                    <div class="row">
+                    <div class="col-md-12">
+                        <label class="col-sm-12 " style="font-weight: bold;">New Email :</label>
+                        <div class="col-sm-12">
+                        <input type="email" id="oldPassword" class="form-control passwordField" placeholder="Enter Email" name="email" [(ngModel)]="changeEmailData.email " #email="ngModel" required (blur)="checkMail()">
+                        <p *ngIf="emailError" style="color: red;padding: 0px;">{{emailError}}</p>
+                        </div>
+                    </div>
+                    
+                    </div>
+                    <div class="row" style="margin:10px;">
+                    <button type="button" class="btn btn-success mlr-5" id="submitPassword" (click)="changeEmail(emailForm)"
+                        [disabled]="!emailForm.valid">Submit</button>
+                    <button type="button" class="btn btn-info" (click)="closeEmailPopup(emailForm)" id="closePasswordPopup">Close</button>
+                    </div>
+            
+                </div>
+                </form>
+            </div>
+        </div>
+        
+        
+        
+            
+            
+            
+            

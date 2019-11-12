@@ -1,0 +1,47 @@
+ <!-- suresh changes 31-07-2019 end -->
+<div class="top-nav row">
+        <div class="col-md-8 col-lg-8 col-sm-8">
+          <div class="logo">
+            <a routerLink="/profile/my-profile">
+                <img src="{{file1_input}}" alt="icon" style="max-width: 100%; max-height: 100%;">
+            </a>
+            
+          </div>
+        </div>
+        <div class="col-md-4 col-lg-4 col-sm-4">
+          <div class="top-bar">
+            <div class="top-menu-controls">
+                <div>
+                    Welcome<span> {{userData.firstName}} {{userData.lastName}}</span>
+                </div>
+              <div class="logged-user-w"> 
+                <div class="logged-user-i"> 
+                    <ng-container >
+                        <img alt="" src="assets/images/avatar.png" *ngIf="userData.image == ''"
+                          style="width: 35px; height: 35px;" alt="Profile Picture">
+          
+                        <img src="{{userData.image}}"  alt="Profile Picture" *ngIf="userData.image != ''" style="width: 35px; height: 35px;">
+                      </ng-container>
+                    
+                    <nav class="logged-user-menu color-style-bright menu-width">
+                        <ul>
+                        <!-- <li><a><i class="ti-dashboard"></i><span> Insights</span></a></li> -->
+                        <li><a routerLink="/resume/view-resume"><i class="ti-briefcase"></i><span>My Profile</span></a></li>
+                        <!-- <li><a routerLink="/profile/edit-profile"><i class="ti-briefcase"></i><span>Edit Profile</span></a></li> -->
+                        <!-- /resume/view-resume -->
+                        <li><a routerLink="/resume/preview-1"><i class="ti-file"></i><span>My Resume</span></a></li>
+                        <li><a routerLink="/job/job-list"><i class="ti-package"></i><span>Job List</span></a></li>
+                        <li><a routerLink="/job/favouriteJobs"><i class="ti-heart"></i><span>Favourite Jobs</span></a></li>
+                        <li><a routerLink="/job/appliedJobs"><i class="ti-heart"></i><span>Applied Jobs</span></a></li>	 
+                        <li><a routerLink="/job/shortlistJobs"><i class="ti-heart"></i><span>Shortlisted Jobs</span></a></li>	             
+                        <li><a (click)="logout()"><i class="ti-shift-right"></i><span>Logout</span></a></li>
+                        </ul>
+                    </nav>
+                    
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- suresh changes 31-07-2019 end -->
