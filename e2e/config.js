@@ -39,7 +39,8 @@ exports.config = {
     framework: 'jasmine2',
     params:
     {
-        url: "http://162.254.209.129:4204",
+
+        url: "http://localhost:4200/authorization/login",
       
 
        
