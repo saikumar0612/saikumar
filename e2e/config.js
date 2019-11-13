@@ -33,7 +33,7 @@ exports.config = {
     {
         // smoke: ['H:/Jasmine/CRM/vendorcompany/Addanothervendorspec.js','H:/Jasmine/CRM/vendorcompany/vendorcompanysearchspec.js', 'H:/Jasmine/CRM/vendorcompany/vendorResetspec.js', 'H:/Jasmine/CRM/vendorcompanycontact/vendorcmnycontresetspec.js', 'H:/Jasmine/CRM/vendorcompanycontact/vendorcmnycontsearchspec.js',
         //     'H:/Jasmine/CRM/Clientcompanycontact/clientcmnycontresetspec.js', 'H:/Jasmine/CRM/Clientcompanycontact/clientcmnycontsearchspec.js', 'H:/Jasmine/CRM/ClientCompany/clientcompanysearchspec.js', 'H:/Jasmine/CRM/ClientCompany/Clientresetspec.js'],
-        smoke: ['H:/Jasmine/ConfigModule/company_info/companyinfospec.js','H:/Jasmine/ConfigModule/company_number_formats/companynumberformatspec.js','H:/Jasmine/ConfigModule/Holidays/AddHolidayspec.js','H:/Jasmine/ConfigModule/Holidays/Editholidayspec.js','H:/Jasmine/ConfigModule/Manage_branches/addManagebranchspec.js','H:/Jasmine/ConfigModule/Manage_branches/Editmanagebranchspec.js','H:/Jasmine/ConfigModule/work_week/workweekspec.js'],
+        smoke: ['H:/jenkins/workspace/newproject/e2e/company_info/companyinfospec.js','H:/jenkins/workspace/newproject/e2e/company_number_formats/companynumberformatspec.js','H:/jenkins/workspace/newproject/e2e/Holidays/AddHolidayspec.js','H:/jenkins/workspace/newproject/e2e/Holidays/Editholidayspec.js','H:/jenkins/workspace/newproject/e2e/Manage_branches/addManagebranchspec.js','H:/jenkins/workspace/newproject/e2e/Manage_branches/Editmanagebranchspec.js','H:/jenkins/workspace/newproject/e2e/work_week/workweekspec.js'],
     },
 
     framework: 'jasmine2',
