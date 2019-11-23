@@ -44,7 +44,9 @@ node {
 							   Job Name: ${env.JOB_NAME}
 
 Thanks,
-DevOps Team""",mail bcc: 'amar.basolutions@gmail.com', body: 'test mail', cc: 'vijay.basolutions@gmail.com', from: '', replyTo: '', subject: 'test run email', to: 'saikumar.basolutions@gmail.com'
+mail bcc: 'vijay.basolutions@gmail.com', body: '''hi sir,
+
+test mail sending from Jenkins build run''', cc: 'amar.basolutions@gmail.com', from: '', replyTo: '', subject: 'test mail', to: 'saikumar.basolutions@gmail.com'
    
    }
 }
