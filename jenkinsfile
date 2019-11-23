@@ -1,12 +1,12 @@
 
 node {
   
-   def mvn = tool (name: 'maven3', type: 'maven') + '/bin/mvn'
+   def mvn = tool (name: 'mavaen-3', type: 'maven') + '/bin/mvn'
    stage('SCM Checkout'){
     // Clone repo
 	git branch: 'master', 
 	credentialsId: 'github', 
-	url: 'https://github.com/saikumar0612/saikumar/edit/master'
+	url: 'https://github.com/saikumar0612/saikumar'
    
    }
    
