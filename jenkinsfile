@@ -1,7 +1,7 @@
 
 node {
   
-   def mvn = tool (name: 'mavaen-3', type: 'maven') + '/bin/mvn'
+   def mvn = tool (name: 'mavaen-3', type: 'maven') + '/mavaen-3/bin/mvn'
    stage('SCM Checkout'){
     // Clone repo
 	git branch: 'master', 
