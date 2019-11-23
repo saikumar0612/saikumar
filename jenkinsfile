@@ -1,7 +1,7 @@
 
 node {
   
-   def mvn = tool (name: 'mavaen3', type: 'maven') + '/bin/mvn'
+   def mvnHome = tool (name: 'mavaen3', type: 'maven') + '/bin/mvn'
    stage('SCM Checkout'){
     // Clone repo
 	git branch: 'master', 
@@ -14,7 +14,7 @@ node {
 	
    stage('Mvn Package'){
 	   // Build using maven
-	   def mvnHome = tool name:'mavaen-3', type: 'maven'
+	   def mvnHome = tool name:'mavaen3', type: 'maven'
 	   sh "${mvnHome}/bin/mvn package"
    }
    
