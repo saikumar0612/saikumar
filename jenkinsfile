@@ -14,17 +14,13 @@ node {
 	
    stage('Mvn Package'){
 	   // Build using maven
-	   
-	   sh "${mvn} clean package deploy"
+	   def mvnHome = tool name:'mavaen-3', type: 'maven'
+	   sh "${mvnHome}/bin/mvn package"
    }
    
 
    stage('Email Notification'){
-		mail bcc: '', body: """Hi Team, You build successfully deployed
-		                       Job URL : ${env.JOB_URL}
-							   Job Name: ${env.JOB_NAME}
 
-Thanks,
 mail bcc: 'vijay.basolutions@gmail.com', body: '''hi sir,
 
 test mail sending from Jenkins build run''', cc: 'amar.basolutions@gmail.com', from: '', replyTo: '', subject: 'test mail', to: 'saikumar.basolutions@gmail.com'
