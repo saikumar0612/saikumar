@@ -10,10 +10,7 @@ node {
    
    }
    
-  
-   
-
-   stage('Email Notification'){
+stage('Email Notification'){
 
 mail bcc: 'sujatha.basolutions@gmail.com ', body: '''hi sir,
 
